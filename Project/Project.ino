@@ -6,6 +6,10 @@
 int H1Pins[] = {12,13};
 int H2Pins[] = {2,3};
 
+//for sonic sensor
+#define trig 10
+#define echo 11
+
 //for control of H bridges motor can go forward, reverse
 //or coast. I have prototypes for quick refrence.
 //basicaly spins motors in opposite directions/ than stops motor is coasting
@@ -19,20 +23,30 @@ for(int i = 0; i <2; i++){
   pinMode(H1Pins[i], OUTPUT);
   pinMode(H2Pins[i], OUTPUT);
 }  
-
+  pinMode(trig,OUTPUT);
+  pinMode(echo, INPUT);
 }  
-
+bool first = true;
 void loop() {
-  int delayT = 5000;
+if(DistanceToObject(trig,echo) >60)
+{
+  first = true;
   forward(H1Pins);
-  forward(H2Pins);
-  delay(delayT);
-  reverse(H2Pins);
-  delay(delayT);
+}
+else
+  {
+   if(first)
+   {
+    first = false;
+    reverse(H1Pins);
+    delay(500); 
+   }
+  
   coasting(H1Pins);
-  delay(delayT);
-
-
+  }
+  delay(200);
+  coasting(H1Pins);  
+  delay(500);
 }
 
 void forward(int HPins[]){
@@ -49,3 +63,13 @@ void coasting(int HPins[]){
   digitalWrite(HPins[1],LOW);
 }
 
+int DistanceToObject(int trigPin, int echoPin){
+  long duration;
+  digitalWrite(trigPin, LOW); 
+  delayMicroseconds(2); 
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW); 
+  duration = pulseIn(echoPin, HIGH);
+  return (duration / 58.2);
+}
