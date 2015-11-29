@@ -1,11 +1,18 @@
 # CS207Project
-CS 207 Project, Candy dispensing robot
+##Candy dispensing robot
 
-Step 1: A solid base
+###Overview
+This is a CS207 project. It uses an arduino and various parts to make a remote control car into a candy dispensing robot.
+This is a first attempt at robotics and arduino development. This project is more about learning how to make everything work together than about effeicency and ease of use so keep that in mind as you go forward.
 
-For this project you first will need a rc car that has two dc motors with an h-bridge conection
-for both the motors since thats what we have.
+###Set-up / Instalation
+To have this code work you need an arduino since it uses the arduino code and the servo library for convenience. The robot would need two h-bridges one for motion and one for stearing. It also needs a sonic sensor and a front collision detection system to get the most out of this code.
 
-With the rc car remove the antena and all the extra stuff that isn't the circuit motors and base
-Then you have to remove the integrated circuit thats on the circuit board so you can connect in the arduino
-Most will have an RX2 as an integrated circuit if done right the code will work with it. will go into more detail later.
+###Credits/ Acknowledgements
+Basic starting points and good instructions:
+* http://www.instructables.com/id/RC-Car-Anti-Crash-System-Using-Arduino/
+* http://www.instructables.com/id/Autonomous-Control-of-RC-Car-Using-Arduino/
+* http://www.instructables.com/
+
+###Contact Info
+tessierbrandon@gmail.com
